@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { CadastrarHoraCertaPage } from '../cadastrar-hora-certa/cadastrar-hora-certa.page';
+import{NavController} from '@ionic/angular';
+import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
-
+  constructor(private navController:NavController) {}
+ 
+  cadastrarHoraCerta(){
+   // alert("chegou");
+   this.navController.navigateForward('/cadastrar-hora-certa');
+   
+  }
 }
+
+
+
