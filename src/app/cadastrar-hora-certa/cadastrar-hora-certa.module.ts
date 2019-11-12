@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { CadastrarHoraCertaPage } from './cadastrar-hora-certa.page';
+
+import { IonicStorageModule } from '@ionic/storage';
+
 
 const routes: Routes = [
   {
@@ -18,7 +21,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule.forRoot(),
+    ReactiveFormsModule,
+    IonicStorageModule.forRoot(),
     RouterModule.forChild(routes)
   ],
   declarations: [CadastrarHoraCertaPage]
