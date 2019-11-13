@@ -3,6 +3,8 @@ import { CadastrarHoraCertaPage } from '../cadastrar-hora-certa/cadastrar-hora-c
 import{NavController} from '@ionic/angular';
 import { VirtualTimeScheduler } from 'rxjs';
 
+import {Storage} from '@ionic/storage'
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,8 +12,16 @@ import { VirtualTimeScheduler } from 'rxjs';
 })
 export class HomePage {
 
-  constructor(private navController:NavController) {}
+  listaHoraCerta = [];
+
+  constructor(private navController:NavController, private storage:Storage) {}
  
+  ionViewWillEnter(){
+    this.storage.get('listaHoraCerta').then((value:any) =>{
+        this.listaHoraCerta = JSON.parse(value);
+
+    });
+  }
   cadastrarHoraCerta(){
    // alert("chegou");
    this.navController.navigateForward('/cadastrar-hora-certa');

@@ -18,11 +18,41 @@ export class CadastrarHoraCertaPage implements OnInit {
   });
 
   constructor(private storage:Storage) { }
-
-  ngOnInit() {
+  formatarZerosEsquerda(valor:number){
+      return valor > 10 ? valor : "0" + valor;
   }
+  ngOnInit() {}
     cadastrarHoraCerta(){
-      console.log(this.formCadastrarHoraCerta.value);
+     // console.log(this.formCadastrarHoraCerta.value);
+     
+     let form = this.formCadastrarHoraCerta.value;
+     form.status = 0;
+     
+     let dataCompleta = new Date(form.data),
+      horaCompleta = new Date(form.hora);
+
+     let dia = this.formatarZerosEsquerda(dataCompleta.getDate()),
+          mes = this.formatarZerosEsquerda(dataCompleta.getMonth() + 1),
+          ano = this.formatarZerosEsquerda(dataCompleta.getFullYear()),
+          hora = this.formatarZerosEsquerda(horaCompleta.getHours()),
+          minutos = this.formatarZerosEsquerda(horaCompleta.getMinutes());
+
+          form.data = dia + " / "+ mes +" / " + ano;
+          form.hora = hora + ":" + minutos;
+
+          console.log(form);
+
+     let listaHoraCerta = [form];
+
+     this.storage.get('listaHoraCerta').then((value:any) => {
+        if (value === null || value === undefined)
+        {
+            let objeto = JSON.parse(value);
+            listaHoraCerta = listaHoraCerta.concat(objeto);
+          }
+           this.storage.set('listaHoraCerta',JSON.stringify(listaHoraCerta));
+      });
+     
     }
 
 
