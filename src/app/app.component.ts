@@ -30,6 +30,7 @@ export class AppComponent {
       this.splashScreen.hide();
       
       this.backgroundMode.enable();
+      //this.backgroundMode.disableWebViewOptimizations();
       this.backgroundMode.setDefaults({silent:true});
 
       this.backgroundMode.on('active').subscribe(() => {
