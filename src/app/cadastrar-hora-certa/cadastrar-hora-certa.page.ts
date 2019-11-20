@@ -19,7 +19,7 @@ export class CadastrarHoraCertaPage implements OnInit {
 
   constructor(private storage:Storage) { }
   formatarZerosEsquerda(valor:number){
-      return valor > 10 ? valor : "0" + valor;
+      return valor > 9 ? valor : "0" + valor;
   }
   ngOnInit() {}
     cadastrarHoraCerta(){
