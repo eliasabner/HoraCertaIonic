@@ -44,7 +44,8 @@ export class CadastrarHoraCertaPage implements OnInit {
 
      let listaHoraCerta = [form];
 
-     this.storage.get('listaHoraCerta').then((value:any) => {
+     this.storage.get('listaHoraCerta').then((value:any) => 
+     {
         if (value === null || value === undefined)
         {
             let objeto = JSON.parse(value);
@@ -52,6 +53,8 @@ export class CadastrarHoraCertaPage implements OnInit {
           }
            this.storage.set('listaHoraCerta',JSON.stringify(listaHoraCerta));
       });
+
+      this.formCadastrarHoraCerta.reset();
      
     }
 

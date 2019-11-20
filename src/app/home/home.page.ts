@@ -17,8 +17,10 @@ export class HomePage {
   constructor(private navController:NavController, private storage:Storage) {}
  
   ionViewWillEnter(){
-    this.storage.get('listaHoraCerta').then((value:any) =>{
-        this.listaHoraCerta = JSON.parse(value);
+      //limmpa o historico do storage
+      //this.storage.clear();
+      this.storage.get('listaHoraCerta').then((value:any) =>{
+      this.listaHoraCerta = JSON.parse(value);
 
     });
   }
