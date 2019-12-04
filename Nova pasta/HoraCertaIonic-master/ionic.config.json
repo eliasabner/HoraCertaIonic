@@ -1,0 +1,7 @@
+{
+  "name": "HoraCerta",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
